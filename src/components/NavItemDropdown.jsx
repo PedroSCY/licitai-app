@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-function NavItem(props) {
+function NavItemDropdown(props) {
     const [open, setOpen] = useState(false);
   
     return (
@@ -13,4 +13,4 @@ function NavItem(props) {
     );
   }
 
-export default NavItem
+export default NavItemDropdown

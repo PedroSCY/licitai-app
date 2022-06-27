@@ -1,6 +1,8 @@
 import React from "react";
-import DropdownMenu from "./DropdownMenu";
-import NavItem from "./NavItem";
+import DropdownLogin from "./DropdownLogin";
+import NavbarItem from "./NavbarItem";
+
+import NavItemDropdown from "./NavItemDropdown";
 
 
 class NavBar extends React.Component {
@@ -13,23 +15,32 @@ class NavBar extends React.Component {
                 </a>
 
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                    <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                        <a href="#" className="nav-link fs-5 px-3">LICITAÇÕES</a>
-                    </li>
+                    <NavbarItem
+                        render={true}
+                        href="#/licitações"
+                        label="LICITAÇÕES"
+                        configsli="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                        configsa="nav-link fs-5 px-3"></NavbarItem>
 
-                    <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                        <a href="#" className="nav-link fs-5 px-3 ">MATERIAIS</a>
-                    </li>
+                    <NavbarItem
+                        render={true}
+                        href="#/materiais"
+                        label="MATERIAL"
+                        configsli="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                        configsa="nav-link fs-5 px-3"></NavbarItem>
 
-                    <li className="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                        <a href="#" className="nav-link fs-5 px-3 ">SOBRE</a>
-                    </li>
+                    <NavbarItem
+                        render={true}
+                        href="#/sobre"
+                        label="SOBRE"
+                        configsli="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                        configsa="nav-link fs-5 px-3"></NavbarItem>
                 </ul>
 
                 <div className="d-flex col-md-3 text-end justify-content-end">
-                    <NavItem config="btn btn-light me-3" titulo="Login">
-                        <DropdownMenu></DropdownMenu>
-                    </NavItem>
+                    <NavItemDropdown config="btn btn-light me-3" titulo="Login">
+                        <DropdownLogin></DropdownLogin>
+                    </NavItemDropdown>
 
                     <button type="button" className="btn btn-primary ">Cadastre-se</button>
                 </div>

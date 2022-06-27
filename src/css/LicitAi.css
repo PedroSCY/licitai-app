@@ -144,32 +144,6 @@
     width: 100%;
   }
   
-  /* .menu-item {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-radius: var(--border-radius);
-    transition: background var(--speed);
-    padding: 0.5rem;
-  } */
-  
-  /* .menu-item .icon-button {
-    margin-right: 0.5rem;
-  }
-  
-  
-  .menu-item .icon-button:hover {
-    filter: none;
-  }
-  
-  .menu-item:hover {
-    background-color: #525357;
-  } */
-  
-  .icon-right {
-    margin-left: auto;
-  }
-  
   /* CSSTransition classes  */
   .menu-primary-enter {
     position: absolute;
@@ -202,4 +176,21 @@
     transform: translateX(110%);
     transition: all var(--speed) ease;
   }
+  /* fim */
+
+  /* Home */
+
+.home{
+}
+.esquerdaHome{
+  width: 20%;
+  background-color: #484a4d;
+  margin-right: 10px;
+}
+
+.direitaHome{
+  width: 80%;
+  background-color: #0066ff;
+
+}
   
