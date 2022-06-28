@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Login from './Login';
 
-function DropdownLogin() {
+function DropdownLogin(props) {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(null);
   const dropdownRef = useRef(null);
@@ -21,7 +21,7 @@ function DropdownLogin() {
 
   function DropdownItem(props) {
     return (
-      <a href="#" className="menu-item align-self-center" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      <a href="#" className="menu-item align-self-center" name="itensLogin" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         {props.children}
       </a>
     );
@@ -58,10 +58,10 @@ function DropdownLogin() {
 
               <div className="d-flex justify-content-between mt-2 mb-2">
                 <DropdownItem goToMenu="main">
-                  <button type="submit" className="btn btn-light ">voltar</button>
+                  <button type="submit" className="btn btn-light " name="itensLogin">voltar</button>
                 </DropdownItem>
                 <DropdownItem goToMenu="msgconfirmacao">
-                  <button type="submit" className="btn btn-primary ">Recuperar</button>
+                  <button type="submit" className="btn btn-primary " name="itensLogin">Recuperar</button>
                 </DropdownItem>
               </div>
             </form>
@@ -74,7 +74,7 @@ function DropdownLogin() {
         in={activeMenu === 'msgconfirmacao'}
         timeout={350}
         classNames="menu-secondary"
-        unmountOnExit = "true"
+        unmountOnExit 
         onEnter={calcHeight}>
         <div className="menu">
 

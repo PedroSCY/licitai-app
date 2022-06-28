@@ -47,7 +47,7 @@ function Login(props) {
             
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             axios
             .post('http://localhost:8080/api/usuarios/autenticar',{
               email: values.email,
@@ -92,9 +92,9 @@ function Login(props) {
 
                 <div className="d-flex justify-content-between mt-2 mb-2 align-self-center">
                     <props.DropdownItem goToMenu='recuperaremail'>
-                        <a href="#"  >Esqueceu a senha?</a>
+                        Esqueceu a senha?
                     </props.DropdownItem>
-                    <button type="submit" className="btn btn-primary ">Entrar</button>
+                    <button type="submit" className="btn btn-primary " name="itensLogin">Entrar</button>
                 </div>
 
             </form>
