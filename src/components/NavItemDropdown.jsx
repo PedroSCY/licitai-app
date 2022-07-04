@@ -11,12 +11,11 @@ function NavItemDropdown(props) {
 
     const handleOutsideClick = (event) => {
      
-      if (dropdownRef.current && !(dropdownRef.current.contains(event.target) || (event.target.name === "itensLogin"))) {
+      if (dropdownRef.current && !(dropdownRef.current.contains(event.target) || (event.target.name === "itemDropdown"))) {
         setOpen(false);
       }
     }
 
- 
     return (
       <li className="nav-item-drop" ref={dropdownRef}>
         <button type="button" className={props.config}  onClick={() => setOpen(!open)}>

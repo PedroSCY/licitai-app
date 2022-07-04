@@ -12,6 +12,7 @@ function Router() {
 
             <Switch>
 
+
                 <Route exact path="/">
                     <Home />
                 </Route>
