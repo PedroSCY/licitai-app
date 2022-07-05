@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef} from 'react';
-import DropdownLogin from "../components/DropdownLogin"
 
 function NavItemDropdown(props) {
     const [open, setOpen] = useState(false);
@@ -11,7 +10,7 @@ function NavItemDropdown(props) {
 
     const handleOutsideClick = (event) => {
      
-      if (dropdownRef.current && !(dropdownRef.current.contains(event.target) || (event.target.name === "itensLogin"))) {
+      if (dropdownRef.current && !(dropdownRef.current.contains(event.target) || (event.target.name === "itemDropdown"))) {
         setOpen(false);
       }
     }

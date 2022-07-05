@@ -6,14 +6,14 @@ import Router from  "../router/Router"
 
 
 import 'bootswatch/dist/flatly/bootstrap.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'toastr/build/toastr.css'
 import '../css/LicitAi.css'
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar> 
+                {/* <Navbar></Navbar>  */}
                 <Router></Router>
             </div>
         )

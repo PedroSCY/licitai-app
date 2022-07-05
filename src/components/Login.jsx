@@ -3,8 +3,12 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
+import UsuarioService from '../service/usuarioService'
+import LocalstorageService from "../service/localstorageService"
+import { mensagemErro, mensagemAlert, mensagemSucesso } from "./toastr";
+import { withRouter } from 'react-router-dom'
 
-import axios from 'axios'
+const service = new UsuarioService();
 
 const StyledTextField = withStyles({
     root: {
@@ -32,11 +36,11 @@ const validationSchema = yup.object({
     email: yup
       .string('Coloque seu email')
       .email('Digite um email Valido')
-      .required('Obrigatorio'),
+      .required('Campo Obrigatorio'),
     password: yup
       .string('Coloque sua senha')
       .min(4, 'Sua senha deve conter no mininimo 4 caracteres')
-      .required('Obrigatorio'),
+      .required('Campo Obrigatorio'),
   });
 
 function Login(props) {
@@ -44,18 +48,19 @@ function Login(props) {
         initialValues: {
             email: '',
             password: '',
-            
+      
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            axios
-            .post('http://localhost:8080/api/usuarios/autenticar',{
-              email: values.email,
-              senha: values.password
+          service.autenticar({
+            email: values.email,
+            senha: values.password
             }).then( response => {
-              console.log(response)
+              LocalstorageService.adicionarItem('_usuario_logado',response.data)
+              props.history.push('/')
+              mensagemSucesso(`Login Completo.`)
             }).catch( erro => {
-              alert(erro.response.data)
+              mensagemErro(erro.response.data)
             })
         },
     });
@@ -72,8 +77,9 @@ function Login(props) {
                         value={formik.values.email}
                         onChange={formik.handleChange}
                         error={formik.touched.email && Boolean(formik.errors.email)}
-                        helperText={formik.touched.email && formik.errors.email}
+                        
                     />
+                    {formik.errors.email && formik.touched.email  ? mensagemAlert(formik.errors.email) : null}
                 </div>
                 <div className="form-group">
                     <StyledTextField
@@ -85,8 +91,9 @@ function Login(props) {
                         value={formik.values.password}
                         onChange={formik.handleChange}
                         error={formik.touched.password && Boolean(formik.errors.password)}
-                        helperText={formik.touched.password && formik.errors.password}
+                  
                     />
+                    {formik.errors.password && formik.touched.password  ? mensagemAlert(formik.errors.password) : null}
                     
                 </div>
 
@@ -102,4 +109,4 @@ function Login(props) {
     )
 }
 
-export default Login
+export default withRouter(Login)
