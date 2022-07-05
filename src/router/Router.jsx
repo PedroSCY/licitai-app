@@ -4,14 +4,13 @@ import Home from "../pages/home"
 import NotFoud from "../pages/NotFoud"
 import NavBar from "../components/Navbar";
 import { mensagemAlert } from "../components/toastr";
-import AuthService from "../service/authService";
 import { Route, Switch, BrowserRouter, Redirect, HashRouter } from 'react-router-dom'
+import { AuthConsumer } from "../main/provedorAutenticacao";
 
-function RotaAutenticada( { component: Component, ...props } ){
+function RotaAutenticada( { component: Component, isAutenticado, ...props } ){
     return (
         <Route {...props} render={ (componentProps) => {
-            console.log(AuthService.isUsuarioAutenticado())
-            if(AuthService.isUsuarioAutenticado()){
+            if(isAutenticado){
                 return (
                     <Component {...componentProps} />
                 )
@@ -24,7 +23,7 @@ function RotaAutenticada( { component: Component, ...props } ){
     )
 }
 
-function Router() {
+function Router(props) {
 
     return (
         <HashRouter>
@@ -32,15 +31,14 @@ function Router() {
             <Switch>
 
                 <Route exact path="/">
-                    <NavBar />
                     <Home />
                 </Route>
 
     
-                <RotaAutenticada path="/materiais" component={NotFoud}>
+                <RotaAutenticada path="/materiais" isAutenticado={props.isAutenticado} component={NotFoud}>
                 </RotaAutenticada>
                 
-                <RotaAutenticada path="/licitações" component={NotFoud}>
+                <RotaAutenticada path="/licitações" isAutenticado={props.isAutenticado} component={NotFoud}>
                 </RotaAutenticada>
 
                 <Route path={"*"}>
@@ -52,4 +50,8 @@ function Router() {
     )
 }
 
-export default Router
+export default () => (
+    <AuthConsumer>
+        {(context) => (<Router isAutenticado={context.isAutenticado} />)}
+    </AuthConsumer>
+)

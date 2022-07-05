@@ -7,7 +7,6 @@ class UsuarioService extends ApiService{
     }
 
     autenticar(credenciais){
-        console.log(credenciais)
         return this.post('/autenticar', credenciais)
     }
 }

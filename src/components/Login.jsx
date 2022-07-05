@@ -6,7 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import UsuarioService from '../service/usuarioService'
 import LocalstorageService from "../service/localstorageService"
 import { mensagemErro, mensagemAlert, mensagemSucesso } from "./toastr";
-import { withRouter } from 'react-router-dom'
+
+import { AuthConsumer } from "../main/provedorAutenticacao";
+
 
 const service = new UsuarioService();
 
@@ -56,8 +58,7 @@ function Login(props) {
             email: values.email,
             senha: values.password
             }).then( response => {
-              LocalstorageService.adicionarItem('_usuario_logado',response.data)
-              props.history.push('/')
+              props.iniciarSessao(response.data)
               mensagemSucesso(`Login Completo.`)
             }).catch( erro => {
               mensagemErro(erro.response.data)
@@ -98,9 +99,10 @@ function Login(props) {
                 </div>
 
                 <div className="d-flex justify-content-between mt-2 mb-2 align-self-center">
-                    <props.DropdownItem goToMenu='recuperaremail'>
+                  
+                    <DropdownItem goToMenu='recuperaremail'>
                         Esqueceu a senha?
-                    </props.DropdownItem>
+                    </DropdownItem>
                     <button type="submit" className="btn btn-primary " name="itensLogin">Entrar</button>
                 </div>
 
@@ -109,4 +111,10 @@ function Login(props) {
     )
 }
 
-export default withRouter(Login)
+export default () => (
+  <AuthConsumer>
+    {(context) => (
+      <Login isUsuarioAutenticado={context.isAutenticado} Logar={context.iniciarSessao}/>
+    )}
+  </AuthConsumer>
+)
