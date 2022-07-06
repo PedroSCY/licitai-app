@@ -1,13 +1,20 @@
 import axios from "axios";
 
 const httpclient = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://localhost:8080',
+    withCredentials: true
 })
 
 class ApiService {
 
     constructor(apiurl){
         this.apiurl = apiurl;
+    }
+
+    static registrarToken(token){
+        if(token){
+            httpclient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+        }
     }
 
     post(url, objeto) {
