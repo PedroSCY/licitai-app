@@ -5,8 +5,8 @@ import NavItemDropdown from "./NavItemDropdown";
 import { mensagemSucesso } from "./toastr";
 import { AuthConsumer } from "../main/provedorAutenticacao";
 
-function NavBar(props) {
 
+function NavBar(props) {
 
     const logout = () => {
         props.deslogar()
@@ -21,7 +21,12 @@ function NavBar(props) {
                         <DropdownLogin></DropdownLogin>
                     </NavItemDropdown>
 
-                    <button type="button" className="btn btn-primary ">Cadastre-se</button>
+                    <NavbarItem 
+                     render={true}
+                     navIntemLinkType = {false}>
+                        <a href="#/cadastro"><button type="button" className="btn btn-primary ">Cadastre-se</button></a>
+                        
+                    </NavbarItem>
                 </>
             )
         } else {

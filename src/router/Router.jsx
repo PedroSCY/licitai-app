@@ -6,6 +6,7 @@ import NavBar from "../components/Navbar";
 import { mensagemAlert } from "../components/toastr";
 import { Route, Switch, BrowserRouter, Redirect, HashRouter } from 'react-router-dom'
 import { AuthConsumer } from "../main/provedorAutenticacao";
+import TelaCadastro from "../pages/TelaCadastro";
 
 function RotaAutenticada( { component: Component, isAutenticado, ...props } ){
     return (
@@ -34,7 +35,10 @@ function Router(props) {
                     <Home />
                 </Route>
 
-    
+                <Route exact path="/cadastro">
+                    <TelaCadastro />
+                </Route>
+
                 <RotaAutenticada path="/materiais" isAutenticado={props.isAutenticado} component={NotFoud}>
                 </RotaAutenticada>
                 

@@ -193,4 +193,18 @@
   background-color: #0066ff;
 
 }
+
+/* Fim */
+
+/* Tela Cadastro */
+
+.CardCadastro{
+  background-color: #f3f3f3;
+  width: 650px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
   

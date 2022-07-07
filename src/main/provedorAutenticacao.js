@@ -12,7 +12,8 @@ class ProvedorAutenticacao extends React.Component{
     
     state = {
         usuarioAutenticado: null,
-        isAutenticado: false
+        isAutenticado: false,
+        isLoading: true
     }
 
     iniciarSessao = (tokenDTO) => {
@@ -38,17 +39,24 @@ class ProvedorAutenticacao extends React.Component{
             this.setState({
                 isAutenticado: true,
                 usuarioAutenticado: usuario,
+                isLoading: false
             })
         }else{
             this.setState( previousState => {
                 return {
-                    ...previousState  
+                    ...previousState, 
+                    isLoading: false
                 }
             })
         }
     }
 
     render(){
+
+        if(this.state.isLoading){
+            return null
+        }
+
         const contexto = {
             usuarioAutenticado: this.state.usuarioAutenticado,
             isAutenticado: this.state.isAutenticado,
