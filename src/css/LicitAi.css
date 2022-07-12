@@ -6,6 +6,7 @@
     --border: 1px solid #474a4d;
     --border-radius: 8px;
     --speed: 500ms; 
+    --area-conteudo: calc(100% - 3.9rem);
   }
 
   ul {
@@ -196,15 +197,66 @@
 
 /* Fim */
 
+
+.DisplayPages{
+  background-color:#cccccc;
+	width:100%;
+  height: var(--area-conteudo);
+  display: flex;
+  flex-direction: column;
+ 
+
+}
+
+
 /* Tela Cadastro */
 
 .CardCadastro{
-  background-color: #f3f3f3;
-  width: 650px;
-  display: flex;
+  background-color: #ffffff;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  height: 100%;
+  margin: 45px;
 
+
+}
+
+.Licitai{
+  background-color:rgb(233, 233, 233);
+  height: 100vh;
+	width:100%;
+
+}
+
+.CardDivisor{
+  background-color: #044b4d;
+  justify-content: start;
+  border-radius: 5px;
+  height: 100%;
+  width: 4%;
+
+}
+
+.CardCorSecundaria {
+  background-color: #eeeeee;
+  border-radius: 5px;
+  height: 100%;
+  width: 48%;
+}
+
+.CardFormularioCadastro{
+  background-color: #ffffff;
+  flex-direction: column;
+  border-radius: 5px;
+  display: flex;
+  height: 100%;
+  width: 48%;
+}
+
+.FormularioCadastro{
+  flex-direction: column;
+  display: flex;
+  height: 100%;
 }
   

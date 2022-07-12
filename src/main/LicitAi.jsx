@@ -13,12 +13,14 @@ import '../css/LicitAi.css'
 class App extends React.Component {
     render() {
         return (
+            <div className="Licitai">
             <ProvedorAutenticacao>
                 <Navbar />
-                <div>
+                <div className="DisplayPages">
                     <Router />
                 </div>
             </ProvedorAutenticacao>
+            </div>
         )
     }
 }

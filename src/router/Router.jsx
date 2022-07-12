@@ -12,10 +12,23 @@ function RotaAutenticada( { component: Component, isAutenticado, ...props } ){
     return (
         <Route {...props} render={ (componentProps) => {
             if(isAutenticado){
+                if(props.path === "/cadastro"){
+                    console.log(props.path)
+                    return(
+                        <Redirect to={ {pathname : '/', state : { from: componentProps.location } } }>{mensagemAlert("Faça Logout para acessar.")}</Redirect>
+                        
+                    )
+                }
                 return (
                     <Component {...componentProps} />
                 )
             }else{
+                if(props.path === "/cadastro"){
+                    console.log(props.path)
+                    return(
+                        <Component {...componentProps} />
+                    )
+                }
                 return(
                     <Redirect to={ {pathname : '/', state : { from: componentProps.location } } }>{mensagemAlert("Faça Login para acessar.")}</Redirect>
                 )
@@ -35,9 +48,8 @@ function Router(props) {
                     <Home />
                 </Route>
 
-                <Route exact path="/cadastro">
-                    <TelaCadastro />
-                </Route>
+                <RotaAutenticada path="/cadastro" isAutenticado={props.isAutenticado} component={TelaCadastro}>
+                </RotaAutenticada>
 
                 <RotaAutenticada path="/materiais" isAutenticado={props.isAutenticado} component={NotFoud}>
                 </RotaAutenticada>
