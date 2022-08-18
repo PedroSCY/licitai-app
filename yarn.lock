@@ -8924,16 +8924,6 @@
     "ansi-styles" "^3.2.0"
     "react-is" "^16.8.4"
 
-"primeicons@^2.0.0":
-  "integrity" "sha512-GJTCeMSQU8UU1GqbsaDrg/IH+b/vSinJQl52NVpdJ7sShYLZA8Eq6jLF48Ye3N/dQloGrE07i7XsZvxQ9pNbqg=="
-  "resolved" "https://registry.npmjs.org/primeicons/-/primeicons-2.0.0.tgz"
-  "version" "2.0.0"
-
-"primereact@^3.3.1":
-  "integrity" "sha512-XsLkInlYsFSK5/FRAM0JMyJEc+9lyI6feKJLNbQIwpker6mk587T3uwfZd8RYhmUGpj/jKEnZ+3V9tl+PKniAg=="
-  "resolved" "https://registry.npmjs.org/primereact/-/primereact-3.4.0.tgz"
-  "version" "3.4.0"
-
 "process-nextick-args@~2.0.0":
   "integrity" "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="
   "resolved" "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
